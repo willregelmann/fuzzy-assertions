@@ -1,11 +1,11 @@
 {
-  "name": "claude-tests",
+  "name": "fuzzy-assertions",
   "owner": { "name": "Will" },
   "plugins": [
     {
       "name": "test",
       "source": "./",
-      "description": "LLM-as-evaluator test framework — write natural language assertions, an isolated AI agent judges pass/fail with evidence"
+      "description": "Test framework for checks you can't practically write — state them in natural language, an isolated agent judges pass/fail with evidence and reports JUnit XML"
     }
   ]
 }
