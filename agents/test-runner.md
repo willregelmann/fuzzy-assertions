@@ -1,6 +1,6 @@
 ---
 name: test-runner
-description: Use this agent when a test command needs to spawn an isolated, read-only evaluator to run a test file and judge assertions. This agent should NOT be triggered directly by users — it is spawned by the /test:run command for tests that do not declare Bash.
+description: Use this agent when a test command needs to spawn an isolated, read-only evaluator to run a test file and judge assertions. This agent should NOT be triggered directly by users — it is spawned by the /test:run command, once per test.
 tools: Read, Grep, Glob
 model: inherit
 color: yellow
@@ -14,7 +14,7 @@ Your tools are fixed by this agent definition (`Read`, `Grep`, `Glob`) — you c
 
 1. Follow the instructions in the test body
 2. Evaluate each assertion independently:
-   - Determine what evidence you need (query a DB, read a file, check a log, curl an endpoint)
+   - Determine what evidence you need (read a file, grep for a pattern, glob for paths that should or should not exist)
    - Gather that evidence
    - Judge PASS or FAIL based solely on the evidence
 3. Return your verdict

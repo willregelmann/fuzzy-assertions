@@ -1,5 +1,5 @@
 {
   "name": "test",
-  "description": "LLM-as-evaluator test framework — write natural language assertions, an isolated AI agent judges pass/fail with evidence",
-  "version": "1.12.0"
+  "description": "Test framework for checks you can't practically write — state them in natural language, an isolated agent judges pass/fail with evidence and reports JUnit XML",
+  "version": "2.0.0"
 }
