@@ -19,13 +19,15 @@ If no test files are found, display "No test files found in `./.claude/tests/`."
 
 Read each file and parse the YAML frontmatter to extract `name` and `assertions`. The body is freeform markdown — instructions for the evaluator.
 
+A test file is malformed if it can't be parsed, has no `name`, or has no assertions. Two files with the same `name` are both malformed — never let one quietly win. A malformed test is not spawned; it becomes an ERROR verdict named by its path (or by its name if it has one), with the problem as the error message. Never skip it silently.
+
 If a specific test name was given, find the file whose `name` frontmatter matches. If no match, list the available test names and stop.
 
 **Step 3 — Execute tests:**
 
 If running multiple tests, assemble all agent prompts first, then spawn all agents in a single message (parallel Agent tool calls — do not call them one at a time).
 
-For each test, spawn `test:test-runner` (`subagent_type`). Its tools are fixed by its own definition to `Read`, `Grep`, `Glob` — every test is read-only, and nothing is passed to scope it per spawn.
+For each test, spawn `test:test-runner` (`subagent_type`). Its tools are fixed by its own definition to `Read`, `Grep`, `Glob`, `Bash` — every test gets the same reach, and nothing is passed to scope it per spawn. Evaluators can run commands, so a run may change the working tree, and tests run in parallel may affect each other; keeping their commands apart is the test author's job.
 
 Do not pass a `name` to the spawn. An unnamed agent runs to completion and delivers its final message — the VERDICT block — automatically. A named agent becomes a persistent teammate that finishes its work, goes idle, and delivers nothing until asked, which turns every run into a round of chasing verdicts by mailbox.
 
@@ -89,4 +91,4 @@ Total: 1/2 passed
 JUnit XML written to test-results.xml
 ```
 
-For any FAIL result, include the failed assertions with their evidence and reason.
+For any FAIL result, include the failed assertions with their evidence and reason. For any ERROR, include its error message.
