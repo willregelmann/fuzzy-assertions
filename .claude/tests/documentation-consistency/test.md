@@ -3,8 +3,10 @@ name: documentation-consistency
 assertions:
   - CLAUDE.md and README.md both use the test path convention ./.claude/tests/<name>/test.md
   - CLAUDE.md's Architecture section lists these components and no others - commands/run.md, agents/test-runner.md, bin/junit.py, plugin.json, marketplace.json
-  - None of README.md, CLAUDE.md, commands/run.md or agents/test-runner.md claims the evaluator agent can run shell commands
+  - README.md, CLAUDE.md, commands/run.md and agents/test-runner.md agree that the evaluator's tools are exactly Read, Grep, Glob and Bash
   - None of README.md, CLAUDE.md, commands/run.md or agents/test-runner.md states or implies that a test can declare its own tools, or that more than one evaluator profile exists
+  - None of README.md, CLAUDE.md, commands/run.md or agents/test-runner.md claims the evaluator is read-only, sandboxed, or that a run leaves the working tree unchanged
+  - README.md does not tell readers to keep checks a command could settle out of the suite
   - README.md and CLAUDE.md refer to the command as /test:run, never as a bare /run or as a shell command
   - The frontmatter fields documented in README.md are exactly the fields commands/run.md parses - name and assertions
   - Every file listed in README.md's plugin structure tree exists on disk

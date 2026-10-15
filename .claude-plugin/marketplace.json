@@ -5,7 +5,7 @@
     {
       "name": "test",
       "source": "./",
-      "description": "Test framework for checks you can't practically write — state them in natural language, an isolated agent judges pass/fail with evidence and reports JUnit XML"
+      "description": "Test framework where every check is a sentence — an isolated agent runs and reads what it needs, judges pass/fail with evidence, and reports JUnit XML"
     }
   ]
 }

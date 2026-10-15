@@ -1,0 +1,13 @@
+[
+  {
+    "name": "nasty-evidence",
+    "result": "FAIL",
+    "duration": 1.5,
+    "error": null,
+    "assertions": [
+      {"assertion": "Output uses <tags> & \"quotes\"", "result": "PASS", "evidence": "found `if a < b && c > d:` and 'single' \"double\""},
+      {"assertion": "No ]]> appears", "result": "FAIL", "evidence": "line 3: x = \"]]>\" & <br/>", "reason": "found ]]> & <br/>"}
+    ]
+  },
+  {"name": "broken", "result": "ERROR", "duration": 0, "error": "no VERDICT block: <html>&nbsp;", "assertions": []}
+]
